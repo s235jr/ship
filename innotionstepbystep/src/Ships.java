@@ -21,15 +21,17 @@ class Main {
             Cord right_down_corner = new Cord(secondCord);
             System.out.println("Drugi róg " + secondCord+ ": " + right_down_corner);
 
-            int[][] shipCord = shipCordonMap(mapSize, left_up_corner, right_down_corner);
+            //shMap emptyMap = new Map(mapSize);
+
+            Map shipCord = shipCordonMap(mapSize, left_up_corner, right_down_corner);
             System.out.print('\n' + "Mapa statku: " + '\n' + '\n');
-            printarray(shipCord);
+            printMap(shipCord);
 
-            int[][] mapofShots = generatemapaftershot(mapSize, shots);
+            Map mapOfShots = generatemapaftershot(mapSize, shots);
             System.out.print('\n' + "Mapa strzałów: " + '\n' + '\n');
-            printarray(mapofShots);
+            printMap(mapOfShots);
 
-            int[][] mapafterfight = generatemapafterfight(shipCord, mapofShots);
+            int[][] mapafterfight = generatemapafterfight(shipCord.fields, mapOfShots.fields);
             System.out.print('\n' + "Mapa po walce: " + '\n' + '\n');
             printarray(mapafterfight);
 
@@ -48,16 +50,17 @@ class Main {
         System.out.println("Liczba niezatopionych statków: " + unsunk);
     }
 
-    static int[][] shipCordonMap(int MapSize, Cord firstCorner, Cord secondCorner) {
-        int[][] arrayofShiponMap = new int[MapSize][MapSize];
+    static Map shipCordonMap(int MapSize, Cord firstCorner, Cord secondCorner) {
+        Map arrayofShiponMap = new Map(MapSize);
+        //int[][] arrayofShiponMap = new int[MapSize][MapSize];
         for (int i = Math.min(firstCorner.x, secondCorner.x); i <= Math.max(firstCorner.x, secondCorner.x); i++) {
             for (int k = Math.min(secondCorner.y, firstCorner.y); k <= Math.max(secondCorner.y, firstCorner.y); k++) {
-                arrayofShiponMap[i][k] = 1;
+                arrayofShiponMap.fields[i][k] = 1;
             }
         }
         return arrayofShiponMap;
     }
-
+/*
     static int[][] generateEmptyMap(int MapSize) {
         int[][] Map = new int[MapSize][MapSize];
         for (int i = 0; i < MapSize; i++) {
@@ -67,16 +70,17 @@ class Main {
         }
         return Map;
     }
-
-    static int[][] generatemapaftershot(int MapSize, String shots) {
-        int[][] mapofShots = generateEmptyMap(MapSize);
+*/
+    static Map generatemapaftershot(int MapSize, String shots) {
+        Map mapOfShots = new Map(MapSize);
+        //int[][] mapofShots = generateEmptyMap(MapSize);
         String[] arrayshots = shots.split(" ");
         for (int i = 0; i < arrayshots.length; i++) {
             String stringshot = arrayshots[i];
             Cord shot = new Cord(stringshot);
-            mapofShots[shot.x][shot.y] = 1;
+            mapOfShots.fields[shot.x][shot.y] = 1;
         }
-        return mapofShots;
+        return mapOfShots;
 
     }
 
@@ -106,6 +110,14 @@ class Main {
         for (int i = 0; i < array.length; i++) {
             for (int k = 0; k < array.length; k++) {
                 System.out.print(array[i][k] + " ");
+            }
+            System.out.println();
+        }
+    }
+    static void printMap(Map array) {
+        for (int i = 0; i < array.fields.length; i++) {
+            for (int k = 0; k < array.fields.length; k++) {
+                System.out.print(array.fields[i][k] + " ");
             }
             System.out.println();
         }

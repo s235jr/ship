@@ -3,6 +3,7 @@ public class Map {
     int[][] fields;
     String shots;
 
+
     Map(int inputMapSize) {
         this.mapSize = inputMapSize;
         int[][] fields = new int[this.mapSize][this.mapSize];
