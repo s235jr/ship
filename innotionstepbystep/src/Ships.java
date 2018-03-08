@@ -21,11 +21,10 @@ class Main {
 
             Map fields = new Map(mapSize);
             fields.markShip(left_up_corner, right_down_corner);
-            //System.out.println('\n' + "Mapa statku: ");
-            //fields.mapToString();
+            System.out.println('\n' + "Mapa statku: " + '\n'+ '\n' + fields.mapToString());
+
             fields.markShots(shots);
-           // System.out.println('\n' + "Mapa po walce: ");
-            //fields.mapToString();
+            System.out.println('\n' + "Mapa statku po walce: " + '\n'+ '\n' + fields.mapToString());
 
             if (fields.isShipDestroyed()) {
                 System.out.println('\n' + "Statek zatopiony");
@@ -41,16 +40,5 @@ class Main {
         System.out.println("Liczna zatopionych statków: " + sunk);
         System.out.println("Liczba niezatopionych statków: " + unsunk);
     }
-
-    static void printMap(Map array) {
-        for (int i = 0; i < array.fields.length; i++) {
-            for (int k = 0; k < array.fields.length; k++) {
-                System.out.print(array.fields[i][k] + " ");
-            }
-            System.out.println();
-        }
-    }
-
-
 }
 

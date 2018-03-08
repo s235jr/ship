@@ -16,8 +16,6 @@ public class Map {
                 this.fields[i][k] = 1;
             }
         }
-        System.out.println('\n' + "Mapa statku: " + '\n');
-        mapToString(this.fields);
     }
 
     public void markShots(String shots) {
@@ -29,8 +27,8 @@ public class Map {
                 this.fields[shot.x][shot.y]--;
             }
         }
-        System.out.println('\n' + "Mapa statku po walce: " + '\n');
-        mapToString(this.fields);
+//        System.out.println('\n' + "Mapa statku po walce: " + '\n');
+//        System.out.println(mapToString());
     }
 
     boolean isShipDestroyed() {
@@ -43,12 +41,14 @@ public class Map {
         return true;
     }
 
-    public void mapToString(int[][] array) {
-        for (int i = 0; i < array.length; i++) {
-            for (int k = 0; k < array.length; k++) {
-                System.out.print(array[i][k] + " ");
+    public String mapToString() {
+        String mapInString = "";
+        for (int i = 0; i < this.fields.length; i++) {
+            for (int k = 0; k < this.fields.length; k++) {
+                mapInString += Integer.toString(this.fields[i][k]);
             }
-            System.out.println();
+            mapInString = mapInString + '\n';
         }
+        return mapInString;
     }
 }

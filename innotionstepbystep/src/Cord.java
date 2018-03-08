@@ -10,7 +10,5 @@ public class Cord {
     Cord(String inputCord) {
         this.x = inputCord.charAt(0) - '1';
         this.y = inputCord.charAt(1) - 'A';
-        //System.out.println("this.x: " + this.x);
-        //System.out.println("this.y: " + this.y);
     }
 }
