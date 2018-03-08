@@ -29,5 +29,6 @@ public class Map {
             Cord shot = new Cord(stringshot);
             this.fields[shot.x][shot.y]--;
         }
+
     }
 }
