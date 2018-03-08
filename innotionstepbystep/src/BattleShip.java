@@ -3,7 +3,7 @@ public class BattleShip {
     public Cord rightBottom;
 
     BattleShip(Cord first, Cord second) {
-    this.leftTop = first;
-    this.rightBottom = second;
+        this.leftTop = first;
+        this.rightBottom = second;
     }
 }
