@@ -21,10 +21,10 @@ class Main {
 
             Map fields = new Map(mapSize);
             fields.markShip(left_up_corner, right_down_corner);
-            System.out.println('\n' + "Mapa statku: " + '\n'+ '\n' + fields.mapToString());
+            System.out.println('\n' + "Mapa statku: " + '\n' + '\n' + fields.mapToString());
 
             fields.markShots(shots);
-            System.out.println('\n' + "Mapa statku po walce: " + '\n'+ '\n' + fields.mapToString());
+            System.out.println('\n' + "Mapa statku po walce: " + '\n' + '\n' + fields.mapToString());
 
             if (fields.isShipDestroyed()) {
                 System.out.println('\n' + "Statek zatopiony");
